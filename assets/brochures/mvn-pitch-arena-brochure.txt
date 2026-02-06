@@ -1,0 +1,10 @@
+MVN PITCH ARENA BROCHURE
+=========================
+
+Event Name: MVN Pitch Arena
+Description: Present your innovative ideas and pitch your projects
+
+[Placeholder for brochure image/PDF]
+[To be uploaded and configured]
+
+Replace this file with actual brochure image/PDF

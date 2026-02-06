@@ -1,0 +1,10 @@
+GAMING ARENA BROCHURE
+=====================
+
+Event Name: Gaming Arena
+Description: Battle it out in the ultimate gaming competition
+
+[Placeholder for brochure image/PDF]
+[To be uploaded and configured]
+
+Replace this file with actual brochure image/PDF

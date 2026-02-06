@@ -1,16 +1,43 @@
+// Redirect to Google Maps with exact location
+function openGoogleMaps() {
+    const latitude = 28.468936575748564;
+    const longitude = 77.32582047549934;
+    const locationName = 'MVN University, 74th KM Stone, NH-2 Delhi-Agra Highway, Aurangabad, Haryana 121105';
+    
+    // Create Google Maps URL with coordinates and location name
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&t=m`;
+    
+    // Open in new tab
+    window.open(googleMapsUrl, '_blank');
+}
+
 // Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+    // Event Location Button Handler
+    const eventLocationBtn = document.getElementById('eventLocationBtn');
+    if (eventLocationBtn) {
+        eventLocationBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openGoogleMaps();
+        });
+    }
 });
 
 // Countdown Timer
@@ -192,6 +219,188 @@ console.log('%c🚀 TECHNOTSAV 2K26 🚀', 'font-size: 30px; color: #00d9ff; fon
 console.log('%cLet the Tech Take Over! 🔥', 'font-size: 20px; color: #ffbe0b;');
 console.log('%cOrganized by TechSphere Club ✨', 'font-size: 16px; color: #ff006e;');
 console.log('%c\nInterested in the code? Join us at the event!', 'font-size: 14px; color: #b8c1ec;');
+
+// Brochure Data
+const brochureData = {
+    'gaming-arena': {
+        title: 'Gaming Arena',
+        icon: '🎮',
+        category: 'Competition',
+        date: '19 Feb 2026',
+        time: '10:00 AM Onwards',
+        description: 'Battle it out in the ultimate gaming competition and show your gaming prowess! Compete against fellow gamers in an exciting tournament with amazing prizes. Are you ready to prove you\'re the ultimate gaming champion?',
+        venue: 'SOET Department, MVN University, Palwal',
+        highlights: ['Trophy', 'Intense Battles', 'Team & Solo', 'Recognition'],
+        details: 'Participants will compete in fast-paced gaming matches. Both team and solo categories are available. Winners will receive exciting prizes and certificates of recognition.'
+    },
+    'mvn-pitch-arena': {
+        title: 'MVN Pitch Arena',
+        icon: '💡',
+        category: 'Innovation',
+        date: '19 Feb 2026',
+        time: '10:00 AM Onwards',
+        description: 'Present your innovative ideas and pitch your projects to industry experts! Turn your vision into reality with expert feedback and mentorship. This is your chance to showcase your entrepreneurial spirit.',
+        venue: 'SOET Department, MVN University, Palwal',
+        highlights: ['Expert Judges', 'Funding Opportunity', 'Networking', 'Mentorship'],
+        details: 'Startup ideas and project pitches are welcome. Get valuable feedback from industry professionals. Winners may receive funding opportunities and networking with investors.'
+    },
+    'ai-automation': {
+        title: 'AI Automation Workflows',
+        icon: '🤖',
+        category: 'AI/ML',
+        date: '19 Feb 2026',
+        time: '10:00 AM Onwards',
+        description: 'Dive into the world of AI and automation! Create intelligent workflows that solve real-world problems. Learn, build, and compete in this cutting-edge challenge.',
+        venue: 'SOET Department, MVN University, Palwal',
+        highlights: ['AI/ML Focus', 'Real-world Problems', 'Coding Challenge', 'Expert Guidance'],
+        details: 'Participants will work with AI/ML models to create automation solutions. This is a hands-on workshop combined with a competition. All skill levels welcome.'
+    },
+    'iot-robotics': {
+        title: 'IoT + Robotics Project',
+        icon: '🔧',
+        category: 'Hardware',
+        date: '19 Feb 2026',
+        time: '10:00 AM Onwards',
+        description: 'Build smart IoT solutions and robotics projects! Showcase your hardware and software integration skills in this comprehensive challenge.',
+        venue: 'SOET Department, MVN University, Palwal',
+        highlights: ['Hardware Integration', 'DIY Projects', 'Innovation', 'Hands-on Learning'],
+        details: 'Create your own IoT or robotics project. Bring your own hardware or use provided components. This is a showcase event where creativity meets technology.'
+    },
+    'hackathon': {
+        title: 'Hackathon',
+        icon: '💻',
+        category: 'Coding',
+        date: '19 Feb 2026',
+        time: '10:00 AM Onwards',
+        description: '24-hour coding marathon! Team up, code, and create innovative solutions. The ultimate test of your programming skills and creativity!',
+        venue: 'SOET Department, MVN University, Palwal',
+        highlights: ['24 Hours', 'Prizes', 'Team Event', 'Open Theme'],
+        details: 'Non-stop coding for 24 hours. Teams of 2-4 members are welcome. Meals and refreshments provided. First, second, and third prizes awarded to winning teams.'
+    }
+};
+
+// Modal Functions
+function openBrochure(eventId) {
+    const modal = document.getElementById('brochureModal');
+    const container = document.getElementById('brochureContainer');
+    const data = brochureData[eventId];
+
+    if (!data) return;
+
+    const highlights = data.highlights.map(h => `
+        <div class="brochure-highlight">
+            <i class="fas fa-star"></i>
+            <p>${h}</p>
+        </div>
+    `).join('');
+
+    const brochureHTML = `
+        <div class="brochure-header">
+            <div class="event-icon">${data.icon}</div>
+            <h2>${data.title}</h2>
+            <p>${data.category}</p>
+        </div>
+
+        <div class="brochure-details">
+            <div class="brochure-detail-item">
+                <div class="brochure-detail-label">📅 Date</div>
+                <div class="brochure-detail-value">${data.date}</div>
+            </div>
+            <div class="brochure-detail-item">
+                <div class="brochure-detail-label">⏰ Time</div>
+                <div class="brochure-detail-value">${data.time}</div>
+            </div>
+        </div>
+
+        <div class="brochure-description">
+            ${data.description}
+        </div>
+
+        <div class="brochure-highlights">
+            ${highlights}
+        </div>
+
+        <div class="brochure-venue">
+            <h3><i class="fas fa-map-marker-alt"></i> Venue</h3>
+            <p>${data.venue}</p>
+        </div>
+
+        <div class="brochure-description">
+            <strong>About This Event:</strong><br>
+            ${data.details}
+        </div>
+
+        <div class="brochure-actions">
+            <button class="brochure-btn" onclick="alert('Registration opening soon! Stay tuned!')">
+                <i class="fas fa-rocket"></i> Register Now
+            </button>
+            <button class="brochure-btn brochure-btn-secondary" onclick="window.print()">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
+
+        <div class="brochure-social-section">
+            <h3>Connect With Us</h3>
+            <div class="brochure-social-links">
+                <a href="https://www.instagram.com/mvn.techsphere?igsh=cDZucnYwOHJ5Y29w" target="_blank" class="social-link instagram-link" title="Follow on Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="social-link youtube-link" title="Subscribe on YouTube">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="mailto:techsphere@mvn.edu.in" class="social-link mail-link" title="Send us an Email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+    `;
+
+    container.innerHTML = brochureHTML;
+    modal.classList.add('active');
+}
+
+function closeBrochure() {
+    const modal = document.getElementById('brochureModal');
+    modal.classList.remove('active');
+}
+
+// Modal close button event listener
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('brochureModal');
+    const closeBtn = document.querySelector('.modal-close');
+
+    closeBtn.addEventListener('click', closeBrochure);
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeBrochure();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeBrochure();
+        }
+    });
+
+    // Add click functionality to event cards view details buttons
+    const eventCards = document.querySelectorAll('.event-card');
+    eventCards.forEach(card => {
+        const brochurePlaceholder = card.querySelector('.event-brochure-placeholder');
+        if (brochurePlaceholder) {
+            brochurePlaceholder.addEventListener('click', (e) => {
+                e.preventDefault();
+                const eventId = brochurePlaceholder.getAttribute('onclick').match(/'([^']+)'/)[1];
+                openBrochure(eventId);
+            });
+        }
+    });
+});
 
 // Registration button click handler (when registration link is available)
 const registerBtn = document.getElementById('registerBtn');

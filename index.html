@@ -41,39 +41,43 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="fire-emoji">🔥</div>
-            <h1 class="glitch" data-text="ARE YOU READY?">ARE YOU READY?</h1>
-            <div class="fire-emoji">🔥</div>
-        </div>
-        <div class="hero-title">
-            <i class="fas fa-rocket rocket-icon"></i>
-            <h1 class="main-title">TECHNOTSAV</h1>
-            <h2 class="subtitle">ENVISAGE 2K26</h2>
-        </div>
-        <p class="organized-by">
-            <i class="fas fa-users"></i> Organized by <span class="club-name">TechSphere Club</span> ✨
-        </p>
-        
-        <!-- Countdown Timer -->
-        <div class="countdown-container">
-            <div class="countdown-title">Event Starts In</div>
-            <div id="countdown" class="countdown">
-                <div class="time-box">
-                    <span id="days">00</span>
-                    <span class="label">Days</span>
+        <div class="hero-wrapper">
+            <div class="hero-main-content">
+                <div class="hero-content">
+                    <div class="fire-emoji">🔥</div>
+                    <h1 class="glitch" data-text="ARE YOU READY?">ARE YOU READY?</h1>
+                    <div class="fire-emoji">🔥</div>
                 </div>
-                <div class="time-box">
-                    <span id="hours">00</span>
-                    <span class="label">Hours</span>
+                <div class="hero-title">
+                    <i class="fas fa-rocket rocket-icon"></i>
+                    <h1 class="main-title">TECHNOTSAV</h1>
+                    <h2 class="subtitle">ENVISAGE 2K26</h2>
                 </div>
-                <div class="time-box">
-                    <span id="minutes">00</span>
-                    <span class="label">Minutes</span>
-                </div>
-                <div class="time-box">
-                    <span id="seconds">00</span>
-                    <span class="label">Seconds</span>
+                <p class="organized-by">
+                    <i class="fas fa-users"></i> Organized by <span class="club-name">TechSphere Club</span> ✨
+                </p>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container">
+                <div class="countdown-title">Event Starts In</div>
+                <div id="countdown" class="countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,8 +93,8 @@
             <div class="info-grid">
                 <div class="info-card">
                     <i class="fas fa-calendar-alt"></i>
-                    <h3>19 & 20 Feb 2026</h3>
-                    <p>Two Days of Tech</p>
+                    <h3>19 Feb 2026</h3>
+                    <p>One Day of Tech</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-clock"></i>
@@ -121,6 +125,9 @@
                     </div>
                     <h3>Gaming Arena</h3>
                     <p>Battle it out in the ultimate gaming competition. Show your gaming prowess and compete for glory!</p>
+                    <a href="#" onclick="openBrochure('gaming-arena'); return false;" class="event-brochure-placeholder">
+                        <p>View Brochure</p>
+                    </a>
                     <div class="event-tag">🎮 Competition</div>
                 </div>
 
@@ -130,6 +137,9 @@
                     </div>
                     <h3>MVN Pitch Arena</h3>
                     <p>Present your innovative ideas and pitch your projects to industry experts. Turn your vision into reality!</p>
+                    <a href="#" onclick="openBrochure('mvn-pitch-arena'); return false;" class="event-brochure-placeholder">
+                        <p>View Brochure</p>
+                    </a>
                     <div class="event-tag">💡 Innovation</div>
                 </div>
 
@@ -139,6 +149,9 @@
                     </div>
                     <h3>AI Automation Workflows</h3>
                     <p>Dive into the world of AI and automation. Create intelligent workflows that solve real-world problems!</p>
+                    <a href="#" onclick="openBrochure('ai-automation'); return false;" class="event-brochure-placeholder">
+                        <p>View Brochure</p>
+                    </a>
                     <div class="event-tag">🤖 AI/ML</div>
                 </div>
 
@@ -148,6 +161,9 @@
                     </div>
                     <h3>IoT + Robotics Project</h3>
                     <p>Build smart IoT solutions and robotics projects. Showcase your hardware and software integration skills!</p>
+                    <a href="#" onclick="openBrochure('iot-robotics'); return false;" class="event-brochure-placeholder">
+                        <p>View Brochure</p>
+                    </a>
                     <div class="event-tag">🔧 Hardware</div>
                 </div>
 
@@ -157,6 +173,9 @@
                     </div>
                     <h3>Hackathon</h3>
                     <p>24-hour coding marathon! Team up, code, and create innovative solutions. The ultimate test of skill!</p>
+                    <a href="#" onclick="openBrochure('hackathon'); return false;" class="event-brochure-placeholder">
+                        <p>View Brochure</p>
+                    </a>
                     <div class="event-tag">💻 Coding</div>
                 </div>
             </div>
@@ -248,7 +267,7 @@
                 <div class="detail-card">
                     <i class="fas fa-calendar-check"></i>
                     <h3>Date</h3>
-                    <p>19 & 20 February 2026</p>
+                    <p>19 February 2026</p>
                 </div>
                 
                 <div class="detail-card">
@@ -277,10 +296,10 @@
                     <p>74th KM Stone, NH-2 Delhi-Agra Highway, NCR, Aurangabad, Haryana 121105</p>
                 </div>
                 <div class="map-container">
-                    <div class="map-marker-indicator">
+                    <button class="map-marker-indicator" id="eventLocationBtn" title="Open in Google Maps">
                         <i class="fas fa-robot"></i>
                         <span>Event Location</span>
-                    </div>
+                    </button>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.0287726158346!2d77.32582047549934!3d28.468936575748564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1f71db831e7%3A0x932db62059ad38e5!2sMVN%20University!5e0!3m2!1sen!2sin!4v1707145678901!5m2!1sen!2sin"
                         allowfullscreen="" 
@@ -477,6 +496,16 @@
         </div>
     </section>
 
+    <!-- Brochure Modal -->
+    <div id="brochureModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="brochureContainer">
+                <!-- Brochure content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -499,7 +528,15 @@
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="" title="Follow on Instagram"><i class="fab fa-instagramhttps://www.instagram.com/mvn.techsphere?igsh=cDZucnYwOHJ5Y29w"></i></a>
+                        <a href="https://www.instagram.com/mvn.techsphere?igsh=cDZucnYwOHJ5Y29w" target="_blank" class="social-icon-link instagram-link" title="Follow on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank" class="social-icon-link youtube-link" title="Subscribe on YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:techsphere@mvn.edu.in" class="social-icon-link mail-link" title="Send us an Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
             </div>

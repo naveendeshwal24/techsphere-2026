@@ -1,0 +1,10 @@
+HACKATHON BROCHURE
+===================
+
+Event Name: Hackathon
+Description: 5-hour coding marathon
+
+[Placeholder for brochure image/PDF]
+[To be uploaded and configured]
+
+Replace this file with actual brochure image/PDF
