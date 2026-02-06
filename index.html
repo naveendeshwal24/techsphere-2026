@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHNOTSAV - ENVISAGE 2K26 | TechSphere Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <!-- Floating Robots/AI Bots -->
+    <div class="floating-bots-container" id="floatingBots"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>TECHNOTSAV</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="fire-emoji">🔥</div>
+            <h1 class="glitch" data-text="ARE YOU READY?">ARE YOU READY?</h1>
+            <div class="fire-emoji">🔥</div>
+        </div>
+        <div class="hero-title">
+            <i class="fas fa-rocket rocket-icon"></i>
+            <h1 class="main-title">TECHNOTSAV</h1>
+            <h2 class="subtitle">ENVISAGE 2K26</h2>
+        </div>
+        <p class="organized-by">
+            <i class="fas fa-users"></i> Organized by <span class="club-name">TechSphere Club</span> ✨
+        </p>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+            <div class="countdown-title">Event Starts In</div>
+            <div id="countdown" class="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Event Info Quick Cards -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>19 & 20 Feb 2026</h3>
+                    <p>Two Days of Tech</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>10:00 AM Onwards</h3>
+                    <p>All Day Event</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>MVN University</h3>
+                    <p>SOET Department, Palwal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2 class="section-title">
+                <span>💻</span> TECH EVENTS <span>💻</span>
+            </h2>
+            <p class="section-subtitle">Get ready for 2 days of pure tech, fun & competition</p>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gaming Arena</h3>
+                    <p>Battle it out in the ultimate gaming competition. Show your gaming prowess and compete for glory!</p>
+                    <div class="event-tag">🎮 Competition</div>
+                </div>
+
+                <div class="event-card highlight">
+                    <div class="event-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>MVN Pitch Arena</h3>
+                    <p>Present your innovative ideas and pitch your projects to industry experts. Turn your vision into reality!</p>
+                    <div class="event-tag">💡 Innovation</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Automation Workflows</h3>
+                    <p>Dive into the world of AI and automation. Create intelligent workflows that solve real-world problems!</p>
+                    <div class="event-tag">🤖 AI/ML</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>IoT + Robotics Project</h3>
+                    <p>Build smart IoT solutions and robotics projects. Showcase your hardware and software integration skills!</p>
+                    <div class="event-tag">🔧 Hardware</div>
+                </div>
+
+                <div class="event-card highlight">
+                    <div class="event-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Hackathon</h3>
+                    <p>24-hour coding marathon! Team up, code, and create innovative solutions. The ultimate test of skill!</p>
+                    <div class="event-tag">💻 Coding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Updates Section -->
+    <section class="updates">
+        <div class="container">
+            <div class="update-banner">
+                <h2>🚨🚨 BIG UPDATE 🚨🚨</h2>
+                <div class="update-list">
+                    <div class="update-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Detailed event rules & formats will be revealed soon</p>
+                    </div>
+                    <div class="update-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Registration link will be shared VERY SOON</p>
+                    </div>
+                    <div class="update-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Registration fees will be revealed SOON</p>
+                    </div>
+                </div>
+                <p class="stay-tuned">So stay tuned and don't miss out 👀🔥</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration">
+        <div class="container">
+            <h2 class="section-title">
+                <span>🎯</span> REGISTRATION <span>🎯</span>
+            </h2>
+            
+            <div class="registration-content">
+                <div class="registration-card">
+                    <div class="reg-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Register Now</h3>
+                    <p>Don't miss your chance to be part of the biggest tech fest!</p>
+                    
+                    <!-- Registration Link Placeholder -->
+                    <div class="reg-link-container">
+                        <p class="coming-soon">Registration Link Coming Soon!</p>
+                        <!-- Uncomment when registration link is available -->
+                        <!-- <a href="#" class="register-btn" id="registerBtn">
+                            <i class="fas fa-rocket"></i> Register Now
+                        </a> -->
+                    </div>
+                </div>
+
+                <div class="registration-card">
+                    <div class="reg-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>Payment QR Code</h3>
+                    <p>Scan to complete your registration payment</p>
+                    
+                    <!-- QR Code Placeholder -->
+                    <div class="qr-container">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>QR Code will be available after registration opens</p>
+                        </div>
+                        <!-- Uncomment and add QR code image when available -->
+                        <!-- <img src="qr-code.png" alt="Payment QR Code" class="qr-code"> -->
+                    </div>
+                    
+                    <div class="payment-info">
+                        <p class="fee-text">Registration Fee: <span class="fee-amount">TBA</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="details" class="details">
+        <div class="container">
+            <h2 class="section-title">
+                <span>📍</span> EVENT DETAILS <span>📍</span>
+            </h2>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Date</h3>
+                    <p>19 & 20 February 2026</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time</h3>
+                    <p>10:00 AM Onwards</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Venue</h3>
+                    <p>SOET Department<br>MVN University, Palwal</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Organized By</h3>
+                    <p><span class="club-name-highlight">🤖 TechSphere Club 💻</span></p>
+                </div>
+            </div>
+
+            <div class="venue-map">
+                <h3><i class="fas fa-map-marked-alt"></i> Location</h3>
+                <div class="venue-address">
+                    <i class="fas fa-map-pin"></i>
+                    <p>74th KM Stone, NH-2 Delhi-Agra Highway, NCR, Aurangabad, Haryana 121105</p>
+                </div>
+                <div class="map-container">
+                    <div class="map-marker-indicator">
+                        <i class="fas fa-robot"></i>
+                        <span>Event Location</span>
+                    </div>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.0287726158346!2d77.32582047549934!3d28.468936575748564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1f71db831e7%3A0x932db62059ad38e5!2sMVN%20University!5e0!3m2!1sen!2sin!4v1707145678901!5m2!1sen!2sin"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span>📞</span> CONTACT US <span>📞</span>
+            </h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                </div>
+
+                <div class="cta-section">
+                    <h3>This is your chance to:</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-star"></i> Show your skills</li>
+                        <li><i class="fas fa-trophy"></i> Compete with the best</li>
+                        <li><i class="fas fa-fire"></i> Experience an epic tech fest</li>
+                    </ul>
+                    <p class="cta-text">Tag your friends, gear up, and get ready to make history at TECHNOTSAV 2K26! 😎🚀</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span>👥</span> OUR TEAM <span>👥</span>
+            </h2>
+            <p class="section-subtitle">Meet the amazing people behind TECHNOTSAV 2K26</p>
+            
+            <div class="team-content">
+                <!-- Head of Events -->
+                <div class="team-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-star"></i> Head of Events
+                    </h3>
+                    <div class="team-grid head-events-grid">
+                        <div class="team-member-card small-card">
+                            <div class="member-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Naveen Deshwal</h4>
+                            <p class="member-role">Head of Events</p>
+                            <p class="member-dept">SOET Department</p>
+                        </div>
+                        <div class="team-member-card small-card">
+                            <div class="member-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Himanshi Chauhan</h4>
+                            <p class="member-role">Head of Events</p>
+                            <p class="member-dept">SOET Department</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Core Leadership -->
+                <div class="team-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-crown"></i> Core Leadership
+                    </h3>
+                    <div class="team-grid core-leadership-grid">
+                        <div class="team-member-card small-card">
+                            <div class="member-icon" style="color: var(--accent-color);">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h4>Adarsh Ranjan</h4>
+                            <p class="member-role">President</p>
+                        </div>
+                        <div class="team-member-card small-card">
+                            <div class="member-icon" style="color: #667eea;">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h4>Manav Gautam</h4>
+                            <p class="member-role">Vice President</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PR Officer -->
+                <div class="team-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-microphone"></i> Public Relations Officer
+                    </h3>
+                    <div class="team-grid">
+                        <div class="team-member-card small-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4>Hitesh Thakur</h4>
+                            <p class="member-role">PR - TechSphere Club</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coordinators -->
+                <div class="team-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-users"></i> Coordinators
+                    </h3>
+                    <div class="team-grid coordinator-grid">
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Sheetal Sharma</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Shambhavi Jha</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Jitender Singh Sengar</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Neha Sorout</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Pradeep Sharma</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Bhumika Sehrawat</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Jasveer Vimal</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Priyanshi Dixit</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Arjun Kumar</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Shakshi Tiwari</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h4>Dipanshu Mittal</h4>
+                            <p class="member-role">Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-rocket"></i> TECHNOTSAV 2K26</h3>
+                    <p>Let the Tech Take Over! 🔥</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#register">Register</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="" title="Follow on Instagram"><i class="fab fa-instagramhttps://www.instagram.com/mvn.techsphere?igsh=cDZucnYwOHJ5Y29w"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TechSphere Club, MVN University. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> by TechSphere Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
