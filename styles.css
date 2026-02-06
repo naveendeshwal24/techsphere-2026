@@ -1955,8 +1955,10 @@ html {
 
 .head-events-grid,
 .core-leadership-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .team-member-card {
@@ -1975,7 +1977,7 @@ html {
 }
 
 .centered-card {
-    max-width: 220px;
+    max-width: 280px;
 }
 
 .centered-grid {
@@ -1986,7 +1988,7 @@ html {
 }
 
 .centered-grid .team-member-card {
-    max-width: 220px;
+    max-width: 280px;
 }
 
 .member-icon {
