@@ -38,6 +38,46 @@ document.addEventListener('DOMContentLoaded', () => {
             openGoogleMaps();
         });
     }
+
+    // Custom Cursor with Random Icons
+    const cursorIcons = ['fa-star', 'fa-heart', 'fa-rocket', 'fa-fire', 'fa-code', 'fa-lightbulb', 'fa-gem', 'fa-crown', 'fa-bolt', 'fa-sparkles'];
+    let customCursor = null;
+    let lastIconChange = 0;
+    const iconChangeInterval = 200; // Change icon every 200ms
+
+    // Create custom cursor element
+    customCursor = document.createElement('div');
+    customCursor.id = 'custom-cursor';
+    customCursor.innerHTML = '<i class="fas fa-star"></i>';
+    document.body.appendChild(customCursor);
+
+    // Hide default cursor
+    document.documentElement.style.cursor = 'none';
+
+    // Update cursor position and icon on mouse move
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = (e.clientX - 15) + 'px';
+        customCursor.style.top = (e.clientY - 15) + 'px';
+
+        const now = Date.now();
+        if (now - lastIconChange > iconChangeInterval) {
+            const randomIcon = cursorIcons[Math.floor(Math.random() * cursorIcons.length)];
+            customCursor.innerHTML = `<i class="fas ${randomIcon}"></i>`;
+            lastIconChange = now;
+        }
+    });
+
+    // Show default cursor when leaving the window
+    document.addEventListener('mouseleave', () => {
+        customCursor.style.display = 'none';
+        document.documentElement.style.cursor = 'auto';
+    });
+
+    // Hide custom cursor when entering the window
+    document.addEventListener('mouseenter', () => {
+        customCursor.style.display = 'block';
+        document.documentElement.style.cursor = 'none';
+    });
 });
 
 // Countdown Timer
