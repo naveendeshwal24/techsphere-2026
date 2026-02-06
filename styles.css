@@ -1975,7 +1975,7 @@ html {
 }
 
 .centered-card {
-    max-width: 180px;
+    max-width: 220px;
 }
 
 .centered-grid {
@@ -1986,7 +1986,7 @@ html {
 }
 
 .centered-grid .team-member-card {
-    max-width: 180px;
+    max-width: 220px;
 }
 
 .member-icon {
