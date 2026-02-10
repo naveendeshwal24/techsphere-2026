@@ -1,15 +1,41 @@
-// Redirect to Google Maps with exact location
+// Redirect to Google Maps with address
 function openGoogleMaps() {
-    const latitude = 28.468936575748564;
-    const longitude = 77.32582047549934;
-    const locationName = 'MVN University, 74th KM Stone, NH-2 Delhi-Agra Highway, Aurangabad, Haryana 121105';
-    
-    // Create Google Maps URL with coordinates and location name
-    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&t=m`;
+    const address = '74th KM Stone, NH-2 Delhi-Agra Highway, NCR, Aurangabad, Haryana 121105';
+    const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
     
     // Open in new tab
     window.open(googleMapsUrl, '_blank');
 }
+
+// Poster Modal Functions
+let posterHoverTimeout = null;
+
+function openPosterModal(posterSrc) {
+    const modal = document.getElementById('posterModal');
+    const modalImage = document.getElementById('posterModalImage');
+    modalImage.src = posterSrc;
+    modal.classList.add('active');
+}
+
+function closePosterModal() {
+    const modal = document.getElementById('posterModal');
+    modal.classList.remove('active');
+}
+
+// Close modal when clicking outside the image
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('posterModal');
+    if (e.target === modal) {
+        closePosterModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closePosterModal();
+    }
+});
 
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,6 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Poster Image Hover Handler - Instant
+    const posterImages = document.querySelectorAll('.poster-image');
+    posterImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            const posterSrc = this.getAttribute('data-poster');
+            openPosterModal(posterSrc);
+        });
+
+        img.addEventListener('mouseleave', function() {
+            if (posterHoverTimeout) {
+                clearTimeout(posterHoverTimeout);
+                posterHoverTimeout = null;
+            }
+        });
+    });
+
     // Event Location Button Handler
     const eventLocationBtn = document.getElementById('eventLocationBtn');
     if (eventLocationBtn) {
@@ -38,46 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openGoogleMaps();
         });
     }
-
-    // Custom Cursor with Random Icons
-    const cursorIcons = ['fa-star', 'fa-heart', 'fa-rocket', 'fa-fire', 'fa-code', 'fa-lightbulb', 'fa-gem', 'fa-crown', 'fa-bolt', 'fa-sparkles'];
-    let customCursor = null;
-    let lastIconChange = 0;
-    const iconChangeInterval = 200; // Change icon every 200ms
-
-    // Create custom cursor element
-    customCursor = document.createElement('div');
-    customCursor.id = 'custom-cursor';
-    customCursor.innerHTML = '<i class="fas fa-star"></i>';
-    document.body.appendChild(customCursor);
-
-    // Hide default cursor
-    document.documentElement.style.cursor = 'none';
-
-    // Update cursor position and icon on mouse move
-    document.addEventListener('mousemove', (e) => {
-        customCursor.style.left = (e.clientX - 15) + 'px';
-        customCursor.style.top = (e.clientY - 15) + 'px';
-
-        const now = Date.now();
-        if (now - lastIconChange > iconChangeInterval) {
-            const randomIcon = cursorIcons[Math.floor(Math.random() * cursorIcons.length)];
-            customCursor.innerHTML = `<i class="fas ${randomIcon}"></i>`;
-            lastIconChange = now;
-        }
-    });
-
-    // Show default cursor when leaving the window
-    document.addEventListener('mouseleave', () => {
-        customCursor.style.display = 'none';
-        document.documentElement.style.cursor = 'auto';
-    });
-
-    // Hide custom cursor when entering the window
-    document.addEventListener('mouseenter', () => {
-        customCursor.style.display = 'block';
-        document.documentElement.style.cursor = 'none';
-    });
 });
 
 // Countdown Timer
@@ -213,18 +215,32 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add particle effect on mouse move (optional enhancement)
+// Add particle effect on mouse move (optional enhancement) - skip in restricted areas
 document.addEventListener('mousemove', (e) => {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = e.pageX + 'px';
-    particle.style.top = e.pageY + 'px';
+    const registrationSection = document.querySelector('.registration');
+    let isInRestricted = false;
     
-    document.body.appendChild(particle);
+    if (registrationSection) {
+        const restrictedArea = registrationSection.getBoundingClientRect();
+        isInRestricted = 
+            e.clientX >= restrictedArea.left && 
+            e.clientX <= restrictedArea.right && 
+            e.clientY >= restrictedArea.top && 
+            e.clientY <= restrictedArea.bottom;
+    }
     
-    setTimeout(() => {
-        particle.remove();
-    }, 1000);
+    if (!isInRestricted) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = e.pageX + 'px';
+        particle.style.top = e.pageY + 'px';
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
+    }
 });
 
 // Add particle CSS
@@ -508,15 +524,80 @@ function createFloatingBots() {
 // Initialize floating bots
 createFloatingBots();
 
-// Add interaction - bots react to mouse
+// Continuous monitoring of bots to enforce restricted zone
+function monitorBotsRestrictedZone() {
+    const bots = document.querySelectorAll('.floating-bot');
+    const registrationSection = document.querySelector('.registration');
+    
+    if (!registrationSection) return;
+    
+    const restrictedArea = registrationSection.getBoundingClientRect();
+    
+    bots.forEach(bot => {
+        const rect = bot.getBoundingClientRect();
+        const botX = rect.left + rect.width / 2;
+        const botY = rect.top + rect.height / 2;
+        
+        // Check if bot is in restricted area
+        const isInRestrictedArea = 
+            botX >= restrictedArea.left && 
+            botX <= restrictedArea.right && 
+            botY >= restrictedArea.top && 
+            botY <= restrictedArea.bottom;
+        
+        if (isInRestrictedArea) {
+            bot.style.opacity = '0';
+            bot.style.pointerEvents = 'none';
+        } else {
+            // Only restore opacity if it was set to 0 due to restricted area
+            if (bot.style.opacity === '0') {
+                bot.style.opacity = '0.8';
+                bot.style.pointerEvents = 'auto';
+            }
+        }
+    });
+    
+    requestAnimationFrame(monitorBotsRestrictedZone);
+}
+
+// Start monitoring bots
+monitorBotsRestrictedZone();
+
+// Add interaction - bots react to mouse with restricted zone for QR codes
 document.addEventListener('mousemove', (e) => {
     const bots = document.querySelectorAll('.floating-bot');
+    const registrationSection = document.querySelector('.registration');
+    
+    // Get the bounding rect of the registration section (restricted area)
+    let restrictedArea = null;
+    if (registrationSection) {
+        restrictedArea = registrationSection.getBoundingClientRect();
+    }
+    
     bots.forEach(bot => {
         const rect = bot.getBoundingClientRect();
         const botX = rect.left + rect.width / 2;
         const botY = rect.top + rect.height / 2;
         const mouseX = e.clientX;
         const mouseY = e.clientY;
+        
+        // Check if bot is in restricted area (registration section with QR codes)
+        const isInRestrictedArea = restrictedArea && 
+            botX >= restrictedArea.left && 
+            botX <= restrictedArea.right && 
+            botY >= restrictedArea.top && 
+            botY <= restrictedArea.bottom;
+        
+        // If in restricted area, hide and prevent interaction
+        if (isInRestrictedArea) {
+            bot.style.opacity = '0';
+            bot.style.pointerEvents = 'none';
+            bot.style.transform = '';
+            return;
+        } else {
+            bot.style.opacity = '0.8';
+            bot.style.pointerEvents = 'auto';
+        }
         
         const distance = Math.sqrt(Math.pow(mouseX - botX, 2) + Math.pow(mouseY - botY, 2));
         

@@ -110,6 +110,34 @@
         </div>
     </section>
 
+    <!-- Featured Banner/Poster Section -->
+    <section class="featured-banner">
+        <div class="container">
+            <div class="banner-wrapper">
+                <h2 class="banner-title">Featured Event Poster</h2>
+                <div class="poster-container">
+                    <div class="poster-item">
+                        <img src="assets/banner/1.png" alt="Event Poster 1" class="poster-image" data-poster="assets/banner/1.png">
+                    </div>
+                    <div class="poster-item">
+                        <img src="assets/banner/2.png" alt="Event Poster 2" class="poster-image" data-poster="assets/banner/2.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poster Preview Modal -->
+    <div class="poster-modal" id="posterModal">
+        <div class="poster-modal-content">
+            <span class="poster-modal-close" onclick="closePosterModal()">&times;</span>
+            <img id="posterModalImage" src="" alt="Poster Preview" class="poster-modal-image">
+        </div>
+    </div>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Events Section -->
     <section id="events" class="events">
         <div class="container">
@@ -182,30 +210,6 @@
         </div>
     </section>
 
-    <!-- Important Updates Section -->
-    <section class="updates">
-        <div class="container">
-            <div class="update-banner">
-                <h2>🚨🚨 BIG UPDATE 🚨🚨</h2>
-                <div class="update-list">
-                    <div class="update-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Detailed event rules & formats will be revealed soon</p>
-                    </div>
-                    <div class="update-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Registration link will be shared VERY SOON</p>
-                    </div>
-                    <div class="update-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Registration fees will be revealed SOON</p>
-                    </div>
-                </div>
-                <p class="stay-tuned">So stay tuned and don't miss out 👀🔥</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Registration Section -->
     <section id="register" class="registration">
         <div class="container">
@@ -221,13 +225,9 @@
                     <h3>Register Now</h3>
                     <p>Don't miss your chance to be part of the biggest tech fest!</p>
                     
-                    <!-- Registration Link Placeholder -->
-                    <div class="reg-link-container">
-                        <p class="coming-soon">Registration Link Coming Soon!</p>
-                        <!-- Uncomment when registration link is available -->
-                        <!-- <a href="#" class="register-btn" id="registerBtn">
-                            <i class="fas fa-rocket"></i> Register Now
-                        </a> -->
+                    <!-- Registration QR Code -->
+                    <div class="qr-container">
+                        <img src="assets/qrcode/registration.png" alt="Registration QR Code" class="qr-code">
                     </div>
                 </div>
 
@@ -238,18 +238,30 @@
                     <h3>Payment QR Code</h3>
                     <p>Scan to complete your registration payment</p>
                     
-                    <!-- QR Code Placeholder -->
+                    <!-- Payment QR Code -->
                     <div class="qr-container">
-                        <div class="qr-placeholder">
-                            <i class="fas fa-qrcode"></i>
-                            <p>QR Code will be available after registration opens</p>
-                        </div>
-                        <!-- Uncomment and add QR code image when available -->
-                        <!-- <img src="qr-code.png" alt="Payment QR Code" class="qr-code"> -->
+                        <img src="assets/qrcode/payment.png" alt="Payment QR Code" class="qr-code">
                     </div>
                     
                     <div class="payment-info">
-                        <p class="fee-text">Registration Fee: <span class="fee-amount">TBA</span></p>
+                        <p class="fee-text">Registration Fee: <span class="fee-amount">₹400 per team</span></p>
+                    </div>
+                </div>
+
+                <div class="registration-card">
+                    <div class="reg-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Star Night QR Code</h3>
+                    <p>Scan to complete your Star Night event payment</p>
+                    
+                    <!-- Star Night QR Code -->
+                    <div class="qr-container">
+                        <img src="assets/qrcode/startnight.png" alt="Star Night QR Code" class="qr-code">
+                    </div>
+                    
+                    <div class="payment-info">
+                        <p class="fee-text">Star Night Fee: <span class="fee-amount">₹550</span></p>
                     </div>
                 </div>
             </div>
@@ -298,13 +310,8 @@
                 <div class="map-container">
                     <button class="map-marker-indicator" id="eventLocationBtn" title="Open in Google Maps">
                         <i class="fas fa-robot"></i>
-                        <span>Event Location</span>
+                        <span>View on Google Maps</span>
                     </button>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.0287726158346!2d77.32582047549934!3d28.468936575748564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1f71db831e7%3A0x932db62059ad38e5!2sMVN%20University!5e0!3m2!1sen!2sin!4v1707145678901!5m2!1sen!2sin"
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
                 </div>
             </div>
         </div>
@@ -549,10 +556,10 @@
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/mvn.techsphere?igsh=cDZucnYwOHJ5Y29w" target="_blank" class="social-icon-link instagram-link" title="Follow on Instagram">
+                        <a href="https://www.instagram.com/mvn.techsphere/" target="_blank" class="social-icon-link instagram-link" title="Follow on Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com" target="_blank" class="social-icon-link youtube-link" title="Subscribe on YouTube">
+                        <a href="https://youtube.com/@mvnutechsphere?si=LD17RN9ZatAWmH5A" target="_blank" class="social-icon-link youtube-link" title="Subscribe on YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a href="mailto:techsphere@mvn.edu.in" class="social-icon-link mail-link" title="Send us an Email">

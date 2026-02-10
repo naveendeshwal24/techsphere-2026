@@ -32,41 +32,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Custom Cursor Styles */
-#custom-cursor {
-    position: fixed;
-    pointer-events: none;
-    width: 30px;
-    height: 30px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    animation: cursor-glow 0.6s ease-in-out;
-}
-
-#custom-cursor i {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
-    filter: drop-shadow(0 0 5px var(--secondary-color));
-    transition: all 0.2s ease;
-}
-
-@keyframes cursor-glow {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -130,6 +95,11 @@ html {
     pointer-events: none;
     z-index: 5;
     overflow: hidden;
+}
+
+/* Hide bots in registration section (QR code area) */
+.floating-bots-container .floating-bot {
+    /* Will be controlled dynamically via JavaScript */
 }
 
 .floating-bot {
@@ -395,6 +365,7 @@ html {
     align-items: center;
     padding: 100px 20px 50px;
     position: relative;
+    overflow: hidden;
 }
 
 .hero-wrapper {
@@ -666,9 +637,231 @@ html {
     margin-bottom: 3rem;
 }
 
+/* Featured Banner/Poster Section */
+.featured-banner {
+    padding: 5rem 0 8rem 0;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%);
+    border-bottom: 3px solid var(--secondary-color);
+    clear: both;
+    overflow: hidden;
+}
+
+.banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.poster-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.poster-item {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    transition: all 0.3s ease;
+}
+
+.poster-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 500px;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(255, 0, 110, 0.15) 100%);
+    border: 3px dashed var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.poster-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.poster-placeholder:hover::before {
+    left: 100%;
+}
+
+.poster-placeholder:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.25) 0%, rgba(255, 0, 110, 0.25) 100%);
+    border-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 217, 255, 0.3), 0 0 30px rgba(255, 0, 110, 0.2);
+}
+
+.poster-placeholder i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.poster-placeholder:hover i {
+    opacity: 1;
+    transform: scale(1.1);
+    color: var(--secondary-color);
+}
+
+.poster-placeholder p {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.poster-placeholder:hover p {
+    color: var(--accent-color);
+}
+
+.placeholder-hint {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    z-index: 2;
+}
+
+.poster-image {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--primary-color);
+    border-radius: 20px;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
+    display: block;
+}
+
+.poster-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 60px rgba(0, 217, 255, 0.5), 0 0 30px rgba(255, 0, 110, 0.3);
+    border-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Poster Preview Modal */
+.poster-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.poster-modal.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.poster-modal-content {
+    position: relative;
+    max-width: 70vw;
+    max-height: 75vh;
+    animation: scaleIn 0.3s ease;
+}
+
+.poster-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 217, 255, 0.5), 0 0 100px rgba(255, 0, 110, 0.3);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.poster-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 300;
+}
+
+.poster-modal-close:hover {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Section Divider */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color) 20%, var(--secondary-color) 50%, var(--primary-color) 80%, transparent);
+    margin: 3rem 0;
+}
+
 /* Events Section */
 .events {
-    padding: 6rem 0;
+    padding: 6rem 0 6rem 0;
+    margin-top: 0;
 }
 
 .events-grid {
@@ -835,59 +1028,6 @@ html {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
-}
-
-/* Updates Section */
-.updates {
-    padding: 4rem 0;
-    background: rgba(255, 0, 110, 0.05);
-}
-
-.update-banner {
-    background: var(--card-bg);
-    border: 3px solid var(--secondary-color);
-    border-radius: 20px;
-    padding: 3rem;
-    text-align: center;
-}
-
-.update-banner h2 {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 2rem;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-.update-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.update-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 1.2rem;
-}
-
-.update-item i {
-    color: var(--accent-color);
-    font-size: 1.5rem;
-}
-
-.stay-tuned {
-    font-size: 1.3rem;
-    color: var(--accent-color);
-    font-weight: bold;
-    margin-top: 2rem;
 }
 
 /* Registration Section */
@@ -1101,32 +1241,32 @@ html {
 }
 
 .map-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(255, 0, 110, 0.05) 100%);
     border-radius: 20px;
-    overflow: hidden;
     border: 3px solid var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
-    position: relative;
+    min-height: 300px;
 }
 
 .map-marker-indicator {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--dark-bg);
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 2rem;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     font-weight: bold;
-    z-index: 10;
+    font-size: 1.1rem;
     box-shadow: 0 5px 20px rgba(255, 190, 11, 0.5);
     animation: marker-pulse 2s ease-in-out infinite;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
 }
 
 .map-marker-indicator:hover {
@@ -1158,12 +1298,6 @@ html {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(-10deg); }
     75% { transform: rotate(10deg); }
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
 }
 
 /* Contact Section */
@@ -1868,70 +2002,7 @@ html {
     box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
 }
 
-@media (max-width: 768px) {
-    .hero-wrapper {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .hero-main-content {
-        text-align: center;
-    }
-
-    .countdown-container {
-        min-width: 100%;
-        width: 100%;
-    }
-
-    .fire-emoji {
-        font-size: 3rem;
-    }
-
-    .glitch {
-        font-size: 3rem;
-    }
-
-    .rocket-icon {
-        font-size: 3.5rem;
-    }
-
-    .main-title {
-        font-size: 3.5rem;
-    }
-
-    .subtitle {
-        font-size: 2rem;
-    }
-
-    .organized-by {
-        font-size: 1.2rem;
-    }
-
-    .club-name {
-        font-size: 1.3rem;
-    }
-
-    .modal-content {
-        padding: 1.5rem;
-        max-height: 95vh;
-    }
-
-    .brochure-header h2 {
-        font-size: 2rem;
-    }
-
-    .brochure-details {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .modal-close {
-        font-size: 1.5rem;
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-}
-
+/* Team Section */
 .team-section {
     padding: 6rem 0;
     background: rgba(0, 0, 0, 0.2);
@@ -1962,30 +2033,32 @@ html {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .coordinator-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .team-member-card.small-card {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1.2rem;
 }
 
 .team-member-card.small-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .team-member-card.small-card .member-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.8rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .team-member-card.small-card .member-role {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .head-events-grid,
@@ -2012,18 +2085,20 @@ html {
 }
 
 .centered-card {
-    max-width: 280px;
+    width: 100%;
 }
 
 .centered-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-content: center;
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .centered-grid .team-member-card {
-    max-width: 280px;
+    width: 100%;
 }
 
 .member-icon {
@@ -2082,6 +2157,114 @@ html {
 .pr-card .role {
     font-size: 1.2rem;
 }
+
+@media (max-width: 768px) {
+    .hero-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-main-content {
+        text-align: center;
+    }
+
+    .countdown-container {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .fire-emoji {
+        font-size: 3rem;
+    }
+
+    .glitch {
+        font-size: 3rem;
+    }
+
+    .rocket-icon {
+        font-size: 3.5rem;
+    }
+
+    .main-title {
+        font-size: 3.5rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .organized-by {
+        font-size: 1.2rem;
+    }
+
+    .club-name {
+        font-size: 1.3rem;
+    }
+
+    .poster-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .poster-item {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .section-divider {
+        margin: 1.5rem 0;
+    }
+
+    .poster-modal-close {
+        top: -35px;
+        font-size: 2.5rem;
+    }
+
+    .poster-modal-content {
+        max-width: 85vw;
+        max-height: 70vh;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        max-height: 95vh;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .coordinator-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .centered-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-member-card {
+        padding: 1.2rem 1rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+    }
+
+    .brochure-header h2 {
+        font-size: 2rem;
+    }
+
+    .brochure-details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .modal-close {
+        font-size: 1.5rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    
     .hamburger {
         display: flex;
     }
@@ -2150,7 +2333,7 @@ html {
     .contact-info {
         min-width: auto;
     }
-
+}
 
 @media (max-width: 480px) {
     .main-title {
@@ -2166,9 +2349,94 @@ html {
         min-width: 80px;
         padding: 0.8rem 1rem;
     }
+
+    .poster-container {
+        gap: 1rem;
+    }
+
+    .poster-item {
+        min-width: 100%;
+    }
+
+    .poster-image {
+        border-width: 2px;
+    }
     
+    .section-divider {
+        margin: 1rem 0;
+    }
+
+    .poster-modal-close {
+        top: -30px;
+        font-size: 2rem;
+    }
+
+    .poster-modal-content {
+        max-width: 95vw;
+        max-height: 65vh;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .coordinator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .centered-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member-card {
+        padding: 1rem 0.8rem;
+    }
+
+    .member-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .team-member-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .member-role {
+        font-size: 0.9rem;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+    }
+
     .time-box span:first-child {
         font-size: 1.8rem;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .event-card {
+        min-height: auto;
+    }
+
+    .registration-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
     }
 }
 
